@@ -1,0 +1,144 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.7; }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.3; transform: scale(0.7); }
+}
+
+@keyframes move {
+  0% { transform: translateY(0) translateX(0); }
+  25% { transform: translateY(-5px) translateX(5px); }
+  50% { transform: translateY(0) translateX(10px); }
+  75% { transform: translateY(5px) translateX(5px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+:root {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 267 90% 54%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 240 3.7% 15.9%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+  --chart-1: 267 90% 54%;
+  --chart-2: 325 90% 60%;
+  --chart-3: 214 90% 58%;
+  --chart-4: 345 85% 61%;
+  --chart-5: 240 80% 58%;
+  --gradient-position: 0deg;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .skill-badge {
+    @apply transition-all duration-300 hover:scale-105;
+  }
+  
+  .social-icon {
+    @apply transition-all duration-300;
+  }
+  
+  .social-icon:hover {
+    transform: translateY(-5px);
+  }
+  
+  .bg-gradient {
+    @apply bg-gradient-to-r from-primary to-[#EC4899];
+  }
+  
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary to-[#EC4899] bg-clip-text text-transparent;
+  }
+  
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+  
+  .animate-pulse-slow {
+    animation: pulse-slow 4s ease-in-out infinite;
+  }
+  
+  .animation-delay-1000 {
+    animation-delay: 1s;
+  }
+  
+  .bg-background-gradient {
+    background: linear-gradient(var(--gradient-position), #0f0f0f, #1a1a2e);
+  }
+  
+  .bg-gradient-radial {
+    background-image: radial-gradient(circle, var(--tw-gradient-stops));
+  }
+  
+  /* Star animation styles */
+  .star {
+    position: absolute;
+    background-color: #fff;
+    border-radius: 50%;
+    animation: twinkle 3s ease-in-out infinite, move 20s ease-in-out infinite;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff;
+  }
+  
+  /* Orbit animation */
+  @keyframes orbit {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  
+  .animation-delay-2000 {
+    animation-delay: 2s;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-gradient-to-b from-primary to-[#EC4899] rounded;
+}
